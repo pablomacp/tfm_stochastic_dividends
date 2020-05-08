@@ -15,6 +15,7 @@ https://www.eurexchange.com/resource/blob/159502/61b4938420f6dc4af4b6688f06cd7f3
 
 precios div futures:
 https://www.eurexchange.com/exchange-en/products/did/exd/54036!onlineStatsReload?productId=54036&productGroupId=13606&busDate=20200401
+valuation date 1 de abril
 
 precios div options:
 https://www.eurexchange.com/exchange-en/market-data/statistics/market-statistics-online/100!onlineStats?productGroupId=13606&productId=69870&viewType=3&cp=Call&month=12&year=2020&busDate=20200401
@@ -24,6 +25,13 @@ https://www.eurexchange.com/exchange-en/market-data/statistics/market-statistics
 
 precios trf:
 https://www.eurexchange.com/exchange-en/market-data/statistics/market-statistics-online/100!onlineStats?viewType=4&productGroupId=13370&productId=54002&cp=&month=&year=&busDate=20200401
+
+datos eurostoxx:
+https://es.investing.com/indices/eu-stoxx50-historical-data
+
+indice dividendos:
+https://www.stoxx.com/index-details?symbol=SX5ED
+https://www.stoxx.com/document/Indices/Current/HistoricalData/h_1ysx5ed.txt
 
 eurex contract specifications:
 https://www.eurexchange.com/resource/blob/1637252/455135201c1b603180c787d81a8f2116/data/contract_specifications_en_ab-2020_04_14.pdf
