@@ -33,5 +33,8 @@ indice dividendos:
 https://www.stoxx.com/index-details?symbol=SX5ED
 https://www.stoxx.com/document/Indices/Current/HistoricalData/h_1ysx5ed.txt
 
+euribor historic data:
+https://www.emmi-benchmarks.eu/euribor-org/euribor-rates.html
+
 eurex contract specifications:
 https://www.eurexchange.com/resource/blob/1637252/455135201c1b603180c787d81a8f2116/data/contract_specifications_en_ab-2020_04_14.pdf
