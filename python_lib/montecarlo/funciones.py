@@ -58,3 +58,25 @@ def BSExOptionAnalytic(r,St,sigma,T,t,rho):
     beta = sqrt( np.dot(sigma,sigma.T) - 2*rho*sigma[0]*sigma[1])
     d = log(St[0]/St[1])/(sqrt(tau)*beta) + sqrt(tau)*beta/2;
     return St[0]*norm.cdf(d) - St[1]*norm.cdf(d-sqrt(tau)*beta);
+
+def cal_yf_from_mat(t0, T, end_year):
+    yf = list()
+    yf.append(np.busday_count(t0, T[0]) / np.busday_count(end_year[0], end_year[1]))
+    for i in range(len(T) - 1):
+        yf.append(
+            np.busday_count(t0, end_year[1]) / np.busday_count(end_year[0], end_year[1]) + i + np.busday_count(
+                end_year[i + 1], T[i + 1]) / np.busday_count(end_year[i + 1], end_year[i + 2]))
+    return yf
+
+def days_yf(t0, T, end_year):
+    days_yf = [np.ones(np.busday_count(t0, T[0]))/np.busday_count(end_year[0], end_year[1])]
+    for i in range(len(T) - 1):
+        days_yf.append(
+            np.concatenate(
+                [np.ones(np.busday_count(T[i], end_year[i+1])) / np.busday_count(end_year[i], end_year[i+1]),
+                 np.ones(np.busday_count(end_year[i+1], T[i+1])) / np.busday_count(end_year[i+1], end_year[i+2])])
+        )
+    h = [days_yf[0]]
+    for i in range(len(days_yf)-1):
+        h.append(np.concatenate([h[i], days_yf[i+1]]))
+    return days_yf, h
