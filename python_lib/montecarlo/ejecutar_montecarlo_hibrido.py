@@ -7,17 +7,14 @@ Created on Wed May  6 01:37:59 2020
 
 import numpy as np
 from montecarlo import *
-from funciones import cal_yf_from_mat, days_yf
+from funciones import cal_yf_from_mat, days_yf, parametros_to_pasos
 from math import exp, sqrt
 from scipy.stats import norm
 import matplotlib.pyplot as plt
 
-# Fechas futuros dividendos eurostox
-# Tfutdiv0 = [ql.Date(18, 12, 2020),
-#            ql.Date(17, 12, 2020),
-#            ql.Date(16, 12, 2020),
-#            ql.Date(15, 12, 2020)]
-T_opt_sx5e = ['2020-04-17',
+
+
+T_opt_sx5e = ['2020-04-17', # len = 13
               '2020-05-15',
               '2020-06-19',
               '2020-07-17',
@@ -39,7 +36,7 @@ T_endyear = ['2020-01-01',
              '2022-01-01',
              '2023-01-01',
              '2024-01-01']
-T_trf = ['2020-06-19',
+T_trf = ['2020-06-19', # len = 15
          '2020-09-18',
          '2020-12-18',
          '2021-03-19',
@@ -112,17 +109,19 @@ r = -0.00168
 # Parametros a calibrar
 b = 0.001 # Criterio experto
 a = [0.01, 0.02, 0.03, 0.04]
+volq = [0.11, 0.12, 0.13, 0.14]
 volS = 0.3
-volq = 0.1
+
 # print(2*min(a)*b>=volq**2) #Condition for q = 0 possibility
 
-a_pasos = np.concatenate([a[0]*np.ones(np.busday_count(t0,T_futdiv[0])), a[1]*np.ones(np.busday_count(T_futdiv[0],T_futdiv[1])), a[2]*np.ones(np.busday_count(T_futdiv[1],T_futdiv[2])), a[3]*np.ones(np.busday_count(T_futdiv[2],T_futdiv[3]))])
+a_pasos = parametros_to_pasos(a, t0, T_futdiv)
+volq_pasos = parametros_to_pasos(volq, t0, T_futdiv)
 
 # Número de pasos N en la simulación
 N = len(h1)
 
 # Cálculos usando normrnd y correlacionando variables después
-S, q = HybridStockDividendsMSamples(S0,q0,r,a_pasos[:N],b,volS,volq,rho,M,N,h1)
+S, q = HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,volS,volq_pasos,rho,M,N,h1)
 
 print('divs_min:', min([min(elementos) for elementos in q]), 'divs_max:', max([max(elementos) for elementos in q]))
 

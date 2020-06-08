@@ -16,9 +16,12 @@ from scipy.stats import norm
 # np.random.normal(0,1,(3,2,2)) matrices dos x dos. El orden de las
 # dimensiones va al revés que matlab
 
-def HybridStockDividendsMSamples(S0,q0,r,a,b,volS,volq,rho,M,N,h):
+def HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,volS,volq_pasos,rho,M,N,h):
     # M number of paths.
     # N number of step of each path.
+    
+    a = a_pasos[:N]
+    volq = volq_pasos[:N]
     
     S=list()
     q=list()
@@ -48,7 +51,7 @@ def HybridStockDividendsMSamples(S0,q0,r,a,b,volS,volq,rho,M,N,h):
             # Probar el efecto de quitar los dividendos al stock.
             Saux[i+1] = Saux[i] + h[i]*(r-qaux[i]-0.5*volS**2) + sqrt(h[i])*volS*random_walk[i,0,path]
             # Modelo Cox-Ingerson-Ross
-            qaux[i+1] = qaux[i] + h[i]*(a[i]-b*qaux[i]) + sqrt(qaux[i]*h[i])*volq*random_walk[i,1,path]
+            qaux[i+1] = qaux[i] + h[i]*(a[i]-b*qaux[i]) + sqrt(qaux[i]*h[i])*volq[i]*random_walk[i,1,path]
             # Modelo Hull-White
             # qaux[i+1] = qaux[i] + h[i]*(a[i]-b*qaux[i]) + sqrt(h[i])*volq*random_walk[i,1,path]
         S.append(np.exp(Saux))

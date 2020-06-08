@@ -80,3 +80,11 @@ def days_yf(t0, T, end_year):
     for i in range(len(days_yf)-1):
         h.append(np.concatenate([h[i], days_yf[i+1]]))
     return days_yf, h
+
+def parametros_to_pasos(param, t0, maturities):
+    if len(param)!=len(maturities):
+        print('faltan o sobran valores del parametro')
+    aux = [param[0]*np.ones(np.busday_count(t0,maturities[0]))]
+    for i in range(len(param)-1):
+        aux.append(param[i+1]*np.ones(np.busday_count(maturities[i],maturities[i+1])))
+    return np.concatenate(aux)
