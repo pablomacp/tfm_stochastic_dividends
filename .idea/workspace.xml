@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3d5d49dc-f58f-4c5f-8e7f-556a1a955b38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/dividend_call_options.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/dividend_call_options.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/eurostoxx_call_options.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/eurostoxx_call_options.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/trf.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/trf.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_lib/montecarlo/ejecutar_montecarlo_hibrido.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_lib/montecarlo/ejecutar_montecarlo_hibrido.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_lib/montecarlo/funciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_lib/montecarlo/funciones.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_lib/montecarlo/montecarlo.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_lib/montecarlo/montecarlo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +105,7 @@
       <workItem from="1590595137221" duration="763000" />
       <workItem from="1591001937052" duration="315000" />
       <workItem from="1591354033998" duration="10996000" />
+      <workItem from="1591629171242" duration="5726000" />
     </task>
     <servers />
   </component>
@@ -119,48 +117,59 @@
       <screen x="-1280" y="0" width="1280" height="984" />
     </state>
     <state x="-1186" y="146" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1590595261647" />
-    <state x="-1101" y="128" key="#xdebugger.evaluate" timestamp="1591546123488">
+    <state x="-550" y="240" key="#xdebugger.evaluate" timestamp="1591696364244">
       <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state x="-1101" y="128" key="#xdebugger.evaluate/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591546123488" />
-    <state width="1237" height="325" key="GridCell.Tab.0.bottom" timestamp="1591546837117">
+    <state x="-550" y="240" key="#xdebugger.evaluate/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591696364244" />
+    <state width="1237" height="280" key="GridCell.Tab.0.bottom" timestamp="1591697441746">
       <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591546837117" />
+    <state width="1237" height="280" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591697441746" />
     <state width="1323" height="238" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591358347813" />
-    <state width="1237" height="325" key="GridCell.Tab.0.center" timestamp="1591546837117">
+    <state width="1237" height="280" key="GridCell.Tab.0.center" timestamp="1591697441746">
       <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.0.center/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591546837117" />
+    <state width="1237" height="280" key="GridCell.Tab.0.center/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591697441746" />
     <state width="1323" height="238" key="GridCell.Tab.0.center/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591358347813" />
-    <state width="1237" height="325" key="GridCell.Tab.0.left" timestamp="1591546837117">
+    <state width="1237" height="280" key="GridCell.Tab.0.left" timestamp="1591697441746">
       <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.0.left/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591546837117" />
+    <state width="1237" height="280" key="GridCell.Tab.0.left/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591697441746" />
     <state width="1323" height="238" key="GridCell.Tab.0.left/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591358347812" />
-    <state width="1237" height="325" key="GridCell.Tab.0.right" timestamp="1591546837117">
+    <state width="1237" height="280" key="GridCell.Tab.0.right" timestamp="1591697441746">
       <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.0.right/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591546837117" />
+    <state width="1237" height="280" key="GridCell.Tab.0.right/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591697441746" />
     <state width="1323" height="238" key="GridCell.Tab.0.right/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591358347813" />
-    <state width="1237" height="325" key="GridCell.Tab.1.bottom" timestamp="1591546837117">
+    <state width="1237" height="328" key="GridCell.Tab.1.bottom" timestamp="1591697205768">
       <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.1.bottom/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591546837117" />
-    <state width="1237" height="325" key="GridCell.Tab.1.center" timestamp="1591546837117">
+    <state width="1237" height="328" key="GridCell.Tab.1.bottom/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591697205768" />
+    <state width="1237" height="328" key="GridCell.Tab.1.center" timestamp="1591697205768">
       <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.1.center/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591546837117" />
-    <state width="1237" height="325" key="GridCell.Tab.1.left" timestamp="1591546837117">
+    <state width="1237" height="328" key="GridCell.Tab.1.center/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591697205768" />
+    <state width="1237" height="328" key="GridCell.Tab.1.left" timestamp="1591697205767">
       <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.1.left/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591546837117" />
-    <state width="1237" height="325" key="GridCell.Tab.1.right" timestamp="1591546837117">
+    <state width="1237" height="328" key="GridCell.Tab.1.left/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591697205767" />
+    <state width="1237" height="328" key="GridCell.Tab.1.right" timestamp="1591697205768">
       <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.1.right/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591546837117" />
+    <state width="1237" height="328" key="GridCell.Tab.1.right/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591697205768" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/python_lib/montecarlo/ejecutar_montecarlo_hibrido.py</url>
+          <line>123</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/tfm_stochastic_dividends$ejecutar_montecarlo_hibrido.coverage" NAME="ejecutar_montecarlo_hibrido Coverage Results" MODIFIED="1591546810585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_lib/montecarlo" />
+    <SUITE FILE_PATH="coverage/tfm_stochastic_dividends$ejecutar_montecarlo_hibrido.coverage" NAME="ejecutar_montecarlo_hibrido Coverage Results" MODIFIED="1591697441734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_lib/montecarlo" />
   </component>
 </project>

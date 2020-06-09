@@ -101,7 +101,7 @@ eurostoxx_call_opt_prices = [97.3592,
 # Datos del problema
 S0 = 2680.3 # También es el strike de las call sobre el eurostoxx
 q0 = 0.022794603
-M = 2**12
+M = 2**10
 K_div = 65 # Strike dividend call options
 rho = -0.088195234
 r = -0.00168
@@ -110,18 +110,22 @@ r = -0.00168
 b = 0.001 # Criterio experto
 a = [0.01, 0.02, 0.03, 0.04]
 volq = [0.11, 0.12, 0.13, 0.14]
-volS = 0.3
+vols = [0.11, .012, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.20, 0.21, 0.22, 0.23]
 
 # print(2*min(a)*b>=volq**2) #Condition for q = 0 possibility
 
 a_pasos = parametros_to_pasos(a, t0, T_futdiv)
 volq_pasos = parametros_to_pasos(volq, t0, T_futdiv)
+vols_pasos = parametros_to_pasos(vols, t0, T_opt_sx5e)
 
 # Número de pasos N en la simulación
-N = len(h1)
+aaaa = [[]] * 5
+aaaa[0] = [1, 1]
+first_year = len(h1)
+N = len(h4)
 
 # Cálculos usando normrnd y correlacionando variables después
-S, q = HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,volS,volq_pasos,rho,M,N,h1)
+S, q = HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,vols_pasos,volq_pasos,rho,M,N,h4)
 
 print('divs_min:', min([min(elementos) for elementos in q]), 'divs_max:', max([max(elementos) for elementos in q]))
 
@@ -130,9 +134,9 @@ for i in range(30):
     plt.plot(range(N+1), q[i],'r')
 plt.show()
 
-payoffs = [PayoffDivFut(index[1:], divs[1:], h1) for index, divs in zip(S,q)]
+payoffs = [PayoffDivFut(index[1:first_year+1], divs[1:first_year+1], h1) for index, divs in zip(S,q)]
 precio = np.mean(payoffs)
-error = np.std(payoffs)/sqrt(M)
+error = np.std(payoffs)/sqrt(len(payoffs))
 alpha = 0.05
 IC = [precio - norm.ppf(1-alpha/2)*error, precio + norm.ppf(1-alpha/2)*error]
 print('Precio MC:', precio)
