@@ -58,15 +58,16 @@ def HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,volS_pasos,volq_pasos,rho,M,N
         Sauxneg[0] = log(S0)
         qauxneg[0] = q0
         for i in range(N):
-            # Probar el efecto de quitar los dividendos al stock.
-            Saux[i+1] = Saux[i] + h[i]*(r-qaux[i]-0.5*volS[i]**2) + sqrt(h[i])*volS[i]*random_walk[i,0,path]
+            Saux[i + 1] = Saux[i] + h[i] * (r - qaux[i] - 0.5 * volS[i] ** 2) + sqrt(h[i]) * volS[i] * random_walk[
+                i, 0, path]
             # Modelo Cox-Ingerson-Ross
-            qaux[i+1] = qaux[i] + h[i]*(a[i]-b*qaux[i]) + sqrt(qaux[i]*h[i])*volq[i]*random_walk[i,1,path]
+            qaux[i + 1] = qaux[i] + h[i] * (a[i] - b * qaux[i]) + sqrt(max(qaux[i], 0) * h[i]) * volq[i] * random_walk[
+                i, 1, path]
             # Modelo Hull-White
             # qaux[i+1] = qaux[i] + h[i]*(a[i]-b*qaux[i]) + sqrt(h[i])*volq*random_walk[i,1,path]
-            Sauxneg[i + 1] = Saux[i] + h[i] * (r - qaux[i] - 0.5 * volS[i] ** 2) - sqrt(h[i]) * volS[i] * random_walk[
+            Sauxneg[i + 1] = Sauxneg[i] + h[i] * (r - qauxneg[i] - 0.5 * volS[i] ** 2) - sqrt(h[i]) * volS[i] * random_walk[
                 i, 0, path]
-            qauxneg[i + 1] = qaux[i] + h[i] * (a[i] - b * qaux[i]) - sqrt(qaux[i] * h[i]) * volq[i] * random_walk[
+            qauxneg[i + 1] = qauxneg[i] + h[i] * (a[i] - b * qauxneg[i]) - sqrt(max(qauxneg[i], 0) * h[i]) * volq[i] * random_walk[
                 i, 1, path]
 
         S[path] = np.exp(Saux)

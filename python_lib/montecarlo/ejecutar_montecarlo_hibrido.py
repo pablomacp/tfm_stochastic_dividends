@@ -101,7 +101,7 @@ eurostoxx_call_opt_prices = [97.3592,
 # Datos del problema
 S0 = 2680.3 # También es el strike de las call sobre el eurostoxx
 q0 = 0.022794603
-M = 2**10
+M = 2**17
 K_div = 65 # Strike dividend call options
 rho = -0.088195234
 r = -0.00168
@@ -122,10 +122,10 @@ vols_pasos = parametros_to_pasos(vols, t0, T_opt_sx5e)
 aaaa = [[]] * 5
 aaaa[0] = [1, 1]
 first_year = len(h1)
-N = len(h4)
+N = len(h1)
 
 # Cálculos usando normrnd y correlacionando variables después
-S, q = HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,vols_pasos,volq_pasos,rho,M,N,h4)
+S, q = HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,vols_pasos,volq_pasos,rho,M,N,h1)
 
 print('divs_min:', min([min(elementos) for elementos in q]), 'divs_max:', max([max(elementos) for elementos in q]))
 
