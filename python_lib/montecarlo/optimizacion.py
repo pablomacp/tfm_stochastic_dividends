@@ -10,7 +10,7 @@ from funciones import cal_yf_from_mat, days_yf, parametros_to_pasos
 from math import exp
 from scipy.optimize import fsolve
 
-def pricer(S0, q0, r, a, b, vols, volq, rho, M, h_elegido):
+def pricer(S0, q0, r, a, b, vols, volq, rho, M, h_elegido, mat_position):
     a_pasos = parametros_to_pasos(a, t0, T_futdiv)
     volq_pasos = parametros_to_pasos(volq, t0, T_futdiv)
     vols_pasos = parametros_to_pasos(vols, t0, T_opt_sx5e)
@@ -19,7 +19,7 @@ def pricer(S0, q0, r, a, b, vols, volq, rho, M, h_elegido):
     N = len(h_elegido)
 
     # Cálculos usando normrnd y correlacionando variables después
-    S, q = HybridStockDividendsMSamples(S0, q0, r, a_pasos, b, vols_pasos, volq_pasos, rho, M, N, h_elegido)
+    S, q = HybridStockDividendsMSamples(S0, q0, r, a_pasos, b, vols_pasos, volq_pasos, rho, M, N, h_elegido, mat_position)
 
     payoffs_divfut = PayoffDivFut(S[1:N + 1], q[1:N + 1], h_elegido)
     payoffs_divopt = exp(-r * yf_futdiv[0]) * PayoffOptCall(payoffs_divfut, K_div)
@@ -27,8 +27,8 @@ def pricer(S0, q0, r, a, b, vols, volq, rho, M, h_elegido):
 
     return [np.mean(payoffs_divfut), np.mean(payoffs_divopt), np.mean(payoffs_eqopt)]
 
-def f_objetivo(S0, q0, r, a, b, vols, volq, rho, M, h_elegido, objetivos):
-    prices = pricer(S0, q0, r, a, b, vols, volq, rho, M, h_elegido)
+def f_objetivo(S0, q0, r, a, b, vols, volq, rho, M, h_elegido, mat_position, objetivos):
+    prices = pricer(S0, q0, r, a, b, vols, volq, rho, M, h_elegido, mat_position)
     return [x1 - x2 for x1, x2 in zip(prices, objetivos)]
 
 if __name__ == '__main__':
@@ -55,6 +55,7 @@ if __name__ == '__main__':
 
     # Steps for each maturity.
     days_yf, h = days_yf(t0, T_futdiv, T_endyear)
+    mat_position = [len(hs) for hs in h]
 
     h1 = h[0]
     h2 = h[1]
@@ -82,7 +83,7 @@ if __name__ == '__main__':
     # Objetivos
     objetivos = [[div_fut_prices[i], div_call_opt_prices[i], eurostoxx_call_opt_prices[i]] for i in range(4)]
 
-    prices_0 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h1)
+    prices_0 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h1, mat_position)
 
     f0 = lambda x: f_objetivo(S0,
                              q0,
@@ -94,6 +95,7 @@ if __name__ == '__main__':
                              rho,
                              M,
                              h1,
+                             mat_position,
                              objetivos[0])
     f1 = lambda x: f_objetivo(S0,
                               q0,
@@ -105,6 +107,7 @@ if __name__ == '__main__':
                               rho,
                               M,
                               h2,
+                              mat_position,
                               objetivos[1])
     f2 = lambda x: f_objetivo(S0,
                               q0,
@@ -116,6 +119,7 @@ if __name__ == '__main__':
                               rho,
                               M,
                               h3,
+                              mat_position,
                               objetivos[2])
     f3 = lambda x: f_objetivo(S0,
                               q0,
@@ -127,6 +131,7 @@ if __name__ == '__main__':
                               rho,
                               M,
                               h4,
+                              mat_position,
                               objetivos[3])
 
     initial_guess = [0.01, 0.1, 0.1]
@@ -157,10 +162,10 @@ if __name__ == '__main__':
     print('Param  solver 3:', a_sol2, vols_sol2, volq_sol2)
     print('Param  solver 4:', a_sol3, vols_sol3, volq_sol3)
 
-    prices_1 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h1)
-    prices_2 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h2)
-    prices_3 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h3)
-    prices_4 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h4)
+    prices_1 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h1, mat_position)
+    prices_2 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h2, mat_position)
+    prices_3 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h3, mat_position)
+    prices_4 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h4, mat_position)
 
     # print('Precios sin calibración:', prices_0)
     print('Precios con calibración 1:', prices_1)
