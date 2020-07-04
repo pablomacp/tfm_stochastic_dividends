@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d5d49dc-f58f-4c5f-8e7f-556a1a955b38" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_lib/montecarlo/optimizacion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tfm_stochastic_dividends.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tfm_stochastic_dividends.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python_lib/montecarlo/implicit_params.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python_lib/montecarlo/optimizacion_pruebas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_lib/montecarlo/ejecutar_montecarlo_hibrido.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_lib/montecarlo/ejecutar_montecarlo_hibrido.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_lib/montecarlo/montecarlo.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_lib/montecarlo/montecarlo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_lib/montecarlo/optimizacion.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_lib/montecarlo/optimizacion.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +53,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.optimizacion">
+  <component name="RunManager" selected="Python.implicit_params">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="tfm_stochastic_dividends" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,6 +98,25 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="implicit_params" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="tfm_stochastic_dividends" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_lib/montecarlo" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_lib/montecarlo/implicit_params.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="optimizacion" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="tfm_stochastic_dividends" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,9 +139,11 @@
     <list>
       <item itemvalue="Python.ejecutar_montecarlo_hibrido" />
       <item itemvalue="Python.optimizacion" />
+      <item itemvalue="Python.implicit_params" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.implicit_params" />
         <item itemvalue="Python.optimizacion" />
       </list>
     </recent_temporary>
@@ -144,6 +164,10 @@
       <workItem from="1591629171242" duration="5726000" />
       <workItem from="1591795632276" duration="32903000" />
       <workItem from="1591969202159" duration="4391000" />
+      <workItem from="1592215045492" duration="6629000" />
+      <workItem from="1592382911132" duration="7000" />
+      <workItem from="1592401030076" duration="5898000" />
+      <workItem from="1592988875072" duration="8815000" />
     </task>
     <servers />
   </component>
@@ -157,60 +181,60 @@
     <state x="-1186" y="146" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1590595261647" />
     <state x="100" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591797328135" />
     <state x="100" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1591919893861" />
-    <state x="749" y="125" key="#xdebugger.evaluate" timestamp="1591960509511">
+    <state x="343" y="133" key="#xdebugger.evaluate" timestamp="1592407398679">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="343" y="133" key="#xdebugger.evaluate/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591959799966" />
+    <state x="343" y="133" key="#xdebugger.evaluate/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1592407398679" />
     <state x="-944" y="140" key="#xdebugger.evaluate/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591871207178" />
     <state x="749" y="125" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1591960509511" />
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom" timestamp="1591968521063">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="109" key="GridCell.Tab.0.bottom" timestamp="1592409170573">
+      <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591959927158" />
+    <state width="1237" height="109" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1592409170573" />
     <state width="1323" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591871230794" />
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1591968521063" />
-    <state width="1323" height="222" key="GridCell.Tab.0.center" timestamp="1591968521063">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="323" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592302931356" />
+    <state width="1237" height="109" key="GridCell.Tab.0.center" timestamp="1592409170573">
+      <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="222" key="GridCell.Tab.0.center/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591959927158" />
+    <state width="1237" height="109" key="GridCell.Tab.0.center/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1592409170573" />
     <state width="1323" height="222" key="GridCell.Tab.0.center/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591871230793" />
-    <state width="1323" height="222" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1591968521063" />
-    <state width="1323" height="222" key="GridCell.Tab.0.left" timestamp="1591968521062">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="323" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592302931356" />
+    <state width="1237" height="109" key="GridCell.Tab.0.left" timestamp="1592409170572">
+      <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="222" key="GridCell.Tab.0.left/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591959927157" />
+    <state width="1237" height="109" key="GridCell.Tab.0.left/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1592409170572" />
     <state width="1323" height="222" key="GridCell.Tab.0.left/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591871230793" />
-    <state width="1323" height="222" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1591968521062" />
-    <state width="1323" height="222" key="GridCell.Tab.0.right" timestamp="1591968521063">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="323" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592302931356" />
+    <state width="1237" height="109" key="GridCell.Tab.0.right" timestamp="1592409170573">
+      <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="222" key="GridCell.Tab.0.right/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591959927158" />
+    <state width="1237" height="109" key="GridCell.Tab.0.right/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1592409170573" />
     <state width="1323" height="222" key="GridCell.Tab.0.right/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591871230793" />
-    <state width="1323" height="222" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1591968521063" />
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1591968521063">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="323" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592302931356" />
+    <state width="1237" height="109" key="GridCell.Tab.1.bottom" timestamp="1592409170573">
+      <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591959927018" />
+    <state width="1237" height="109" key="GridCell.Tab.1.bottom/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1592409170573" />
     <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591871230794" />
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1591968521063" />
-    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1591968521063">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="323" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592302931357" />
+    <state width="1237" height="109" key="GridCell.Tab.1.center" timestamp="1592409170573">
+      <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="222" key="GridCell.Tab.1.center/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591959927017" />
+    <state width="1237" height="109" key="GridCell.Tab.1.center/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1592409170573" />
     <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591871230794" />
-    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1591968521063" />
-    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1591968521063">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="323" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1592302931357" />
+    <state width="1237" height="109" key="GridCell.Tab.1.left" timestamp="1592409170573">
+      <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="222" key="GridCell.Tab.1.left/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591959927017" />
+    <state width="1237" height="109" key="GridCell.Tab.1.left/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1592409170573" />
     <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591871230794" />
-    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1591968521063" />
-    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1591968521063">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="323" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1592302931357" />
+    <state width="1237" height="109" key="GridCell.Tab.1.right" timestamp="1592409170573">
+      <screen x="-1280" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="222" key="GridCell.Tab.1.right/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1591959927017" />
+    <state width="1237" height="109" key="GridCell.Tab.1.right/0.0.1366.728/-1280.0.1280.984@-1280.0.1280.984" timestamp="1592409170573" />
     <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1591871230794" />
-    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1591968521063" />
+    <state width="1237" height="323" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1592302931357" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1591920249998">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -225,7 +249,7 @@
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1591961179707" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/tfm_stochastic_dividends$optimizacion.coverage" NAME="optimizacion Coverage Results" MODIFIED="1591959926966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_lib/montecarlo" />
+    <SUITE FILE_PATH="coverage/tfm_stochastic_dividends$optimizacion.coverage" NAME="optimizacion Coverage Results" MODIFIED="1592406984714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_lib/montecarlo" />
     <SUITE FILE_PATH="coverage/tfm_stochastic_dividends$ejecutar_montecarlo_hibrido.coverage" NAME="ejecutar_montecarlo_hibrido Coverage Results" MODIFIED="1591870980024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_lib/montecarlo" />
   </component>
 </project>

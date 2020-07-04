@@ -54,21 +54,21 @@ def HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,volS_pasos,volq_pasos,rho,M,N
     q[0] = np.ones(2*M) * q0
     S[0] = np.exp(Saux)
     for dia in range(N):
-        Saux += h[dia] * (np.ones(2*M) * (r - 0.5 * volS[dia] ** 2) - q[dia]) + sqrt(h[dia]) * volS[dia] * np.concatenate((random_walk[dia,0,:], -random_walk[dia,0,:]))
-        qaux = np.maximum(np.zeros(2*M), q[dia]) # q se hace negativo por la discretización del problema
-        q[dia+1] = q[dia] + h[dia] * (a[dia] * np.ones(2*M) - b * q[dia]) + np.multiply(np.sqrt(qaux * h[dia]) * volq[dia], np.concatenate((random_walk[dia,1,:], -random_walk[dia,1,:])))
+        Saux += h[dia] * (np.ones(2*M) * (r - 0.5 * volS[dia] ** 2) - q[dia]) + np.sqrt(h[dia]) * volS[dia] * np.concatenate((random_walk[dia,0,:], -random_walk[dia,0,:]))
+        # qaux = np.maximum(np.zeros(2*M), q[dia]) # q se hace negativo por la discretización del problema
+        # q[dia+1] = q[dia] + h[dia] * (a[dia] * np.ones(2*M) - b * q[dia]) + np.multiply(np.sqrt(qaux * h[dia]) * volq[dia], np.concatenate((random_walk[dia,1,:], -random_walk[dia,1,:])))
+        q[dia + 1] = q[dia] + b * h[dia] * (a[dia] * np.ones(2 * M) -  q[dia]) + np.multiply(
+            np.sqrt(h[dia]) * volq[dia], np.concatenate((random_walk[dia, 1, :], -random_walk[dia, 1, :])))
         S[dia+1] = np.exp(Saux)
 
     t2 = time.time()
     print('Cálculo caminos:', t2 - t1)
     return S, q
 
-def PayoffDivFut(S,q,h):
-    t0 = time.time()
+def PayoffDivFut(S,q,h,hstart):
     result = np.zeros(len(S[0]))
-    for i in range(len(h)):
+    for i in range(hstart, len(h)):
         result += np.multiply(S[i],q[i])*h[i]
-    # print('Cálculo payoff:', time.time()-t0)
     return result
 
 def PayoffOptCall(S, K):

@@ -14,17 +14,17 @@ import matplotlib.pyplot as plt
 from scipy.optimize import fsolve
 
 
-T_opt_sx5e = ['2020-04-17', # len = 13
-              '2020-05-15',
-              '2020-06-19',
-              '2020-07-17',
-              '2020-08-21',
-              '2020-09-18',
+T_opt_sx5e = [#'2020-04-17', # len = 13
+              #'2020-05-15',
+              #'2020-06-19',
+              #'2020-07-17',
+              #'2020-08-21',
+              #'2020-09-18',
               '2020-12-18', #
-              '2021-03-19',
-              '2021-06-18',
+              #'2021-03-19',
+              #'2021-06-18',
               '2021-12-17', #
-              '2022-06-17',
+              #'2022-06-17',
               '2022-12-16', #
               '2023-12-15'] #
 T_futdiv = ['2020-12-18',
@@ -60,6 +60,7 @@ yf_futdiv = cal_yf_from_mat(t0, T_futdiv, T_endyear)
 
 # Steps for each maturity.
 days_yf, h = days_yf(t0, T_futdiv, T_endyear)
+hstart = [0] + [len(h[i]) for i in range(len(h)-1)]
 
 h1 = h[0]
 h2 = h[1]
@@ -101,16 +102,19 @@ eurostoxx_call_opt_prices = [97.3592,
 # Datos del problema
 S0 = 2680.3 # También es el strike de las call sobre el eurostoxx
 q0 = 0.022794603
-M = 2**16
+M = 2**15
 K_div = 65 # Strike dividend call options
 rho = -0.088195234
 r = -0.00168
 
 # Parametros a calibrar
 b = 0.001 # Criterio experto
-a = [0.01, 0.02, 0.03, 0.04]
-volq = [0.11, 0.12, 0.13, 0.14]
-vols = [0.11, .012, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.20, 0.21, 0.22, 0.23]
+# a = [0.01, 0.02, 0.03, 0.04]
+# volq = [0.11, 0.12, 0.13, 0.14]
+# vols = [0.11, .012, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.20, 0.21, 0.22, 0.23]
+a = [0.015506635921427488, -0.029324986036283557, 0.041341089994676776, 0.04134785521924823]
+vols = [0.29514724550393595, 0.21206824587688233, 0.1779995891633232, 0.2601674244992223]
+volq = [0.1656479699860158, -0.012761534503374776, -0.7199524150182002, -0.7199658576181299]
 
 # print(2*min(a)*b>=volq**2) #Condition for q = 0 possibility
 
@@ -119,7 +123,7 @@ volq_pasos = parametros_to_pasos(volq, t0, T_futdiv)
 vols_pasos = parametros_to_pasos(vols, t0, T_opt_sx5e)
 
 # Número de pasos N en la simulación
-h_elegido = h1
+h_elegido = h4
 N = len(h_elegido)
 
 # Cálculos usando normrnd y correlacionando variables después
@@ -130,15 +134,16 @@ S, q = HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,vols_pasos,volq_pasos,rho,
 #     plt.plot(range(N+1), q[i],'r')
 # plt.show()
 
-payoffs_divfut = PayoffDivFut(S[1:N+1], q[1:N+1], h_elegido)
+payoffs_divfut = PayoffDivFut(S[1:N+1], q[1:N+1], h_elegido, hstart[3])
 payoffs_divopt = exp(-r*yf_futdiv[0]) * PayoffOptCall(payoffs_divfut, K_div)
-payoffs_eqopt = exp(-r*yf_futdiv[0]) * PayoffOptCall(S[1:N+1], S0)
+payoffs_eqopt = exp(-r*yf_futdiv[0]) * PayoffOptCall(S[N], S0)
 
 # payoffs = [PayoffDivFut(index[1:first_year+1], divs[1:first_year+1], h1) for index, divs in zip(S,q)]
 precio_divfut = np.mean(payoffs_divfut)
 precio_divopt = np.mean(payoffs_divopt)
 precio_eqopt = np.mean(payoffs_eqopt)
 
+print(precio_divfut, precio_divopt, precio_eqopt)
 # error = np.std(payoffs)/sqrt(len(payoffs))
 # alpha = 0.05
 # IC = [precio - norm.ppf(1-alpha/2)*error, precio + norm.ppf(1-alpha/2)*error]

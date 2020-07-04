@@ -120,10 +120,10 @@ if __name__ == '__main__':
     f1 = lambda x: f_objetivo(S0,
                               q0,
                               r,
-                              [a[0], x[0], a[2], a[3]],
+                              [x[0], x[0], a[2], a[3]],
                               b,
-                              [vols[0], x[1], vols[2], vols[3]],
-                              [volq[0], x[2], volq[2], volq[3]],
+                              [x[1], x[1], vols[2], vols[3]],
+                              [x[2], x[2], volq[2], volq[3]],
                               rho,
                               M,
                               h[1],
@@ -138,10 +138,10 @@ if __name__ == '__main__':
     f2 = lambda x: f_objetivo(S0,
                               q0,
                               r,
-                              [a[0], a[1], x[0], a[3]],
+                              [x[0], x[1], x[0], a[3]],
                               b,
-                              [vols[0], vols[1], x[1], vols[3]],
-                              [volq[0], volq[1], x[2], volq[3]],
+                              [x[0], x[1], x[1], vols[3]],
+                              [x[0], x[1], x[2], volq[3]],
                               rho,
                               M,
                               h[2],
@@ -156,10 +156,10 @@ if __name__ == '__main__':
     f3 = lambda x: f_objetivo(S0,
                               q0,
                               r,
-                              [a[0], a[1], a[2], x[0]],
+                              [x[0], x[1], x[2], x[0]],
                               b,
-                              [vols[0], vols[1], vols[2], x[1]],
-                              [volq[0], volq[1], volq[2], x[2]],
+                              [x[0], x[1], x[2], x[1]],
+                              [x[0], x[1], x[2], x[2]],
                               rho,
                               M,
                               h[3],
@@ -182,10 +182,10 @@ if __name__ == '__main__':
     print('Param  solver 3:', sol2['x'])
     print('Param  solver 4:', sol3['x'])
 
-    prices_1 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h[0], hstart[0])
-    prices_2 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h[1], hstart[1])
-    prices_3 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h[2], hstart[2])
-    prices_4 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h[3], hstart[3])
+    prices_1 = pricer(S0, q0, r, [a[0], a[0], a[0], a[0]], b, [vols[0], vols[0], vols[0], vols[0]], [volq[0], volq[0], volq[0], volq[0]], rho, M, h[0], hstart[0])
+    prices_2 = pricer(S0, q0, r, [a[1], a[1], a[1], a[1]], b, [vols[1], vols[1], vols[1], vols[1]], [volq[1], volq[1], volq[1], volq[1]], rho, M, h[1], hstart[1])
+    prices_3 = pricer(S0, q0, r, [a[2], a[2], a[2], a[2]], b, [vols[2], vols[2], vols[2], vols[2]], [volq[2], volq[2], volq[2], volq[2]], rho, M, h[2], hstart[2])
+    prices_4 = pricer(S0, q0, r, [a[3], a[3], a[3], a[3]], b, [vols[3], vols[3], vols[3], vols[3]], [volq[3], volq[3], volq[3], volq[3]], rho, M, h[3], hstart[3])
 
     # print('Precios sin calibración:', prices_0)
     print('Precios con calibración 1:', prices_1)

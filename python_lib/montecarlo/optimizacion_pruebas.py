@@ -69,13 +69,13 @@ if __name__ == '__main__':
     # Datos del problema
     S0 = 2680.3  # También es el strike de las call sobre el eurostoxx
     q0 = 0.022794603
-    M = 2 ** 13
+    M = 2 ** 14
     K_div = 65  # Strike dividend call options
     rho = 0.23240868 # -0.088195234
     r = -0.00168
 
     # Parametros a calibrar
-    b = 0.01  # Criterio experto 0.001
+    b = 0.001  # Criterio experto
     a = [0.01, 0.01, 0.01, 0.01]
     vols = [0.1, 0.1, 0.1, 0.1]
     volq = [0.1, 0.1, 0.1, 0.1]
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     prices_0 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h[0], hstart[0])
 
     initial_guess = [0.2, 0.5, 0.5]
-    metodo = 'lm'
+    metodo = 'broyden1'
     f0 = lambda x: f_objetivo(S0,
                               q0,
                               r,
@@ -104,19 +104,20 @@ if __name__ == '__main__':
     a[0] = sol0['x'][0]
     vols[0] = sol0['x'][1]
     volq[0] = sol0['x'][2]
-    print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-    print(f_objetivo(S0,
-                              q0,
-                              r,
-                              [a[0], a[0], a[2], a[3]],
-                              b,
-                              [vols[0], vols[0], vols[2], vols[3]],
-                              [volq[0], volq[0], volq[2], volq[3]],
-                              rho,
-                              M,
-                              h[1],
-                              hstart[1],
-                              objetivos[1]))
+    # print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    # print(f_objetivo(S0,
+    #                           q0,
+    #                           r,
+    #                           [a[0], a[0], a[2], a[3]],
+    #                           b,
+    #                           [vols[0], vols[0], vols[2], vols[3]],
+    #                           [volq[0], volq[0], volq[2], volq[3]],
+    #                           rho,
+    #                           M,
+    #                           h[1],
+    #                           hstart[1],
+    #                           objetivos[1]))
+    # a = f_objetivo(S0,               q0,               r,               [a[0], a[0], a[2], a[3]],               b,               [vols[0], vols[0], vols[2], vols[3]],               [volq[0], volq[0], volq[2], volq[3]],               rho,               M,               h[1],               hstart[1],               objetivos[1])
     f1 = lambda x: f_objetivo(S0,
                               q0,
                               r,
