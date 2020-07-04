@@ -11,7 +11,7 @@ from funciones import cal_yf_from_mat, days_yf, parametros_to_pasos
 from math import exp, sqrt
 from scipy.stats import norm
 import matplotlib.pyplot as plt
-
+from scipy.optimize import fsolve
 
 
 T_opt_sx5e = ['2020-04-17', # len = 13
@@ -60,6 +60,7 @@ yf_futdiv = cal_yf_from_mat(t0, T_futdiv, T_endyear)
 
 # Steps for each maturity.
 days_yf, h = days_yf(t0, T_futdiv, T_endyear)
+mat_position = [len(hs) for hs in h]
 
 h1 = h[0]
 h2 = h[1]
@@ -101,7 +102,7 @@ eurostoxx_call_opt_prices = [97.3592,
 # Datos del problema
 S0 = 2680.3 # También es el strike de las call sobre el eurostoxx
 q0 = 0.022794603
-M = 2**17
+M = 2**16
 K_div = 65 # Strike dividend call options
 rho = -0.088195234
 r = -0.00168
@@ -119,25 +120,29 @@ volq_pasos = parametros_to_pasos(volq, t0, T_futdiv)
 vols_pasos = parametros_to_pasos(vols, t0, T_opt_sx5e)
 
 # Número de pasos N en la simulación
-aaaa = [[]] * 5
-aaaa[0] = [1, 1]
-first_year = len(h1)
-N = len(h1)
+h_elegido = h2
+N = len(h_elegido)
 
 # Cálculos usando normrnd y correlacionando variables después
-S, q = HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,vols_pasos,volq_pasos,rho,M,N,h1)
+S, q = HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,vols_pasos,volq_pasos,rho,M,N,h_elegido,mat_position)
 
-print('divs_min:', min([min(elementos) for elementos in q]), 'divs_max:', max([max(elementos) for elementos in q]))
+# for i in range(30):
+#     plt.plot(range(N+1), S[i],'b')
+#     plt.plot(range(N+1), q[i],'r')
+# plt.show()
 
-for i in range(30):
-    plt.plot(range(N+1), S[i],'b')
-    plt.plot(range(N+1), q[i],'r')
-plt.show()
+payoffs_divfut = PayoffDivFut(S[1:N+1], q[1:N+1], h_elegido)
+payoffs_divopt = exp(-r*yf_futdiv[0]) * PayoffOptCall(payoffs_divfut, K_div)
+payoffs_eqopt = exp(-r*yf_futdiv[0]) * PayoffOptCall(S[N], S0)
 
-payoffs = [PayoffDivFut(index[1:first_year+1], divs[1:first_year+1], h1) for index, divs in zip(S,q)]
-precio = np.mean(payoffs)
-error = np.std(payoffs)/sqrt(len(payoffs))
+# payoffs = [PayoffDivFut(index[1:first_year+1], divs[1:first_year+1], h1) for index, divs in zip(S,q)]
+precio_divfut = np.mean(payoffs_divfut)
+precio_divopt = np.mean(payoffs_divopt)
+precio_eqopt = np.mean(payoffs_eqopt)
+
+error = np.std(payoffs_divfut)/sqrt(len(payoffs_divfut))
 alpha = 0.05
-IC = [precio - norm.ppf(1-alpha/2)*error, precio + norm.ppf(1-alpha/2)*error]
-print('Precio MC:', precio)
+IC = [precio_divfut - norm.ppf(1-alpha/2)*error, precio_divfut + norm.ppf(1-alpha/2)*error]
+print('Precio MC:', precio_divfut)
 print('IC 95%:', IC)
+
