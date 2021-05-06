@@ -102,7 +102,7 @@ eurostoxx_call_opt_prices = [97.3592,
 # Datos del problema
 S0 = 2680.3 # También es el strike de las call sobre el eurostoxx
 q0 = 0.022794603
-M = 2**16
+M = 2**14
 K_div = 65 # Strike dividend call options
 rho = -0.088195234
 r = -0.00168
@@ -126,10 +126,10 @@ N = len(h_elegido)
 # Cálculos usando normrnd y correlacionando variables después
 S, q = HybridStockDividendsMSamples(S0,q0,r,a_pasos,b,vols_pasos,volq_pasos,rho,M,N,h_elegido,mat_position)
 
-# for i in range(30):
-#     plt.plot(range(N+1), S[i],'b')
-#     plt.plot(range(N+1), q[i],'r')
-# plt.show()
+for i in range(100):
+    plt.plot(range(N+1), [S[j][i] for j in range(len(S))],'b')
+    plt.plot(range(N+1), [q[j][i] for j in range(len(q))],'r')
+plt.show()
 
 payoffs_divfut = PayoffDivFut(S[1:N+1], q[1:N+1], h_elegido)
 payoffs_divopt = exp(-r*yf_futdiv[0]) * PayoffOptCall(payoffs_divfut, K_div)

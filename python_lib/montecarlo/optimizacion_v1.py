@@ -68,14 +68,14 @@ if __name__ == '__main__':
 
     # Datos del problema
     S0 = 2680.3  # También es el strike de las call sobre el eurostoxx
-    q0 = 0.022794603
-    M = 2 ** 13
+    q0 = 0.074072907
+    M = 2 ** 12
     K_div = 65  # Strike dividend call options
-    rho = -0.088195234
+    rho = -0.134251773
     r = -0.00168
 
     # Parametros a calibrar
-    b = 0.001  # Criterio experto
+    b = 0.01  # Criterio experto
     a = [0.01, 0.01, 0.01, 0.01]
     vols = [0.1, 0.1, 0.1, 0.1]
     volq = [0.1, 0.1, 0.1, 0.1]
@@ -97,6 +97,13 @@ if __name__ == '__main__':
                              h1,
                              mat_position,
                              objetivos[0])
+
+    initial_guess = [0.01, 0.1, 0.1]
+    [a_sol0, vols_sol0, volq_sol0] = fsolve(f0, initial_guess, xtol=10e-7)
+    a[0] = a_sol0
+    vols[0] = vols_sol0
+    volq[0] = volq_sol0
+    
     f1 = lambda x: f_objetivo(S0,
                               q0,
                               r,
@@ -109,6 +116,12 @@ if __name__ == '__main__':
                               h2,
                               mat_position,
                               objetivos[1])
+    
+    [a_sol1, vols_sol1, volq_sol1] = fsolve(f1, [a_sol0, vols_sol0, volq_sol0], xtol=10e-7)
+    a[1] = a_sol1
+    vols[1] = vols_sol1
+    volq[1] = volq_sol1
+    
     f2 = lambda x: f_objetivo(S0,
                               q0,
                               r,
@@ -121,6 +134,12 @@ if __name__ == '__main__':
                               h3,
                               mat_position,
                               objetivos[2])
+    
+    [a_sol2, vols_sol2, volq_sol2] = fsolve(f2, [a_sol1, vols_sol1, volq_sol1], xtol=10e-7)
+    a[2] = a_sol2
+    vols[2] = vols_sol2
+    volq[2] = volq_sol2
+    
     f3 = lambda x: f_objetivo(S0,
                               q0,
                               r,
@@ -133,21 +152,8 @@ if __name__ == '__main__':
                               h4,
                               mat_position,
                               objetivos[3])
-
-    initial_guess = [0.01, 0.1, 0.1]
-    [a_sol0, vols_sol0, volq_sol0] = fsolve(f0, initial_guess)
-    a[0] = a_sol0
-    vols[0] = vols_sol0
-    volq[0] = volq_sol0
-    [a_sol1, vols_sol1, volq_sol1] = fsolve(f1, [a_sol0, vols_sol0, volq_sol0])
-    a[1] = a_sol1
-    vols[1] = vols_sol1
-    volq[1] = volq_sol1
-    [a_sol2, vols_sol2, volq_sol2] = fsolve(f2, [a_sol1, vols_sol1, volq_sol1])
-    a[2] = a_sol2
-    vols[2] = vols_sol2
-    volq[2] = volq_sol2
-    [a_sol3, vols_sol3, volq_sol3] = fsolve(f3, [a_sol2, vols_sol2, volq_sol2])
+    
+    [a_sol3, vols_sol3, volq_sol3] = fsolve(f3, [a_sol2, vols_sol2, volq_sol2], xtol=10e-7)
     a[3] = a_sol3
     vols[3] = vols_sol3
     volq[3] = volq_sol3
