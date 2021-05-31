@@ -70,7 +70,7 @@ if __name__ == '__main__':
     # Datos del problema
     S0 = 2680.3  # También es el strike de las call sobre el eurostoxx
     q0 = 0.019967966 #0.022794603
-    M = 2 ** 16
+    M = 2 ** 12
     K_div = 65  # Strike dividend call options
     rho = -0.189292925
     r = -0.00168
