@@ -9,6 +9,7 @@ from montecarlo import *
 from funciones import cal_yf_from_mat, days_yf, parametros_to_pasos
 from math import exp
 from scipy.optimize import fsolve
+import numpy as np
 
 def pricer(S0, q0, r, a, b, vols, volq, rho, M, h_previo, h_elegido, mat_position):
     a_pasos = parametros_to_pasos(a, t0, T_futdiv)
@@ -178,7 +179,6 @@ if __name__ == '__main__':
     prices_3 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h2, h3, mat_position)
     prices_4 = pricer(S0, q0, r, a, b, vols, volq, rho, M, h3, h4, mat_position)
 
-    # print('Precios sin calibración:', prices_0)
     print('Precios con calibración 1:', prices_1)
     print('Precios de mercado 1', objetivos[0], '\n')
     print('Precios con calibración 2:', prices_2)
@@ -187,6 +187,3 @@ if __name__ == '__main__':
     print('Precios de mercado 3', objetivos[2], '\n')
     print('Precios con calibración 4:', prices_4)
     print('Precios de mercado 4', objetivos[3], '\n')
-
-    ########################
-    ######################## Está mal calculado el índice de dividendos, hay que resetearlo cada año
